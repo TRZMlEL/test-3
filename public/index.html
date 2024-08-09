@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Control</title>
+  <script>
+    async function controlDevice(action) {
+      const deviceId = 'bfabce852df2fc50d1v5sj'; // Zamień na rzeczywisty ID urządzenia
+      const switchState = action === 'on';
+
+      const response = await fetch('/control', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ deviceId, switchState }),
+      });
+
+      const result = await response.text();
+      alert(result);
+    }
+  </script>
+</head>
+<body>
+  <h1>Control Device</h1>
+  <button onclick="controlDevice('on')">Turn On</button>
+  <button onclick="controlDevice('off')">Turn Off</button>
+</body>
+</html>
